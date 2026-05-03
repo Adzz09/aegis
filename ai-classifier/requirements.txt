@@ -1,0 +1,7 @@
+confluent-kafka
+pydantic>=2.0.0
+torch
+onnxruntime
+numpy
+scikit-learn
+wandb

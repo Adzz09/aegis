@@ -1,0 +1,6 @@
+confluent-kafka
+pydantic>=2.0.0
+ortools
+redis
+numpy
+shapely

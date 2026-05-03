@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Backgrounds ─────────────────────────────── */
+    --color-bg-deep:       #080C14;
+    --color-bg-void:       #0D1220;
+    --color-bg-abyss:      #111827;
+    --color-bg-surface:    #1A2235;
+    --color-bg-overlay:    #1F2A40;
+
+    /* ── Primary Blue ────────────────────────────── */
+    --color-blue-dim:      #0A2A4A;
+    --color-blue-dark:     #0E3A6E;
+    --color-blue-core:     #1565C0;
+    --color-blue-bright:   #1E88E5;
+    --color-blue-glow:     #42A5F5;
+    --color-blue-light:    #90CAF9;
+
+    /* ── Threat Scale ────────────────────────────── */
+    --color-threat-0:      #10B981;   /* Cleared */
+    --color-threat-1:      #F59E0B;   /* Monitoring */
+    --color-threat-2:      #F97316;   /* Caution */
+    --color-threat-3:      #EF4444;   /* Hostile */
+    --color-threat-4:      #DC2626;   /* Critical */
+    --color-threat-engaged:#8B5CF6;   /* Being Engaged */
+    --color-threat-dead:   #6B7280;   /* Destroyed */
+
+    /* ── Radar Green ─────────────────────────────── */
+    --color-radar-dark:    #064E3B;
+    --color-radar-core:    #059669;
+    --color-radar-bright:  #10B981;
+    --color-radar-glow:    #34D399;
+
+    /* ── Typography ──────────────────────────────── */
+    --color-text-primary:  #F1F5F9;
+    --color-text-secondary:#94A3B8;
+    --color-text-muted:    #475569;
+    --color-text-disabled: #334155;
+    --color-text-accent:   #42A5F5;
+
+    /* ── Borders ─────────────────────────────────── */
+    --color-border-subtle: #1E293B;
+    --color-border-default:#2D3F5E;
+    --color-border-active: #1E88E5;
+    --color-border-danger: #EF4444;
+
+    /* ── Glow Effects ────────────────────────────── */
+    --glow-blue:    0 0 12px rgba(30, 136, 229, 0.4);
+    --glow-red:     0 0 12px rgba(239, 68, 68, 0.5);
+    --glow-green:   0 0 12px rgba(16, 185, 129, 0.4);
+    --glow-violet:  0 0 12px rgba(139, 92, 246, 0.4);
+  }
+
+  body {
+    @apply bg-bg-deep text-text-secondary font-mono overflow-hidden;
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-secondary);
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary font-sans;
+    color: var(--color-text-primary);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .panel-card {
+    background: var(--color-bg-void);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 6px;
+    padding: 16px;
+  }
+
+  .panel-card__header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .badge--cleared  { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+  .badge--unknown  { background: rgba(245, 158, 11, 0.15);  color: #F59E0B; }
+  .badge--caution  { background: rgba(249, 115, 22, 0.15);  color: #F97316; }
+  .badge--hostile  { background: rgba(239, 68, 68, 0.15);   color: #EF4444; }
+  .badge--critical { background: rgba(220, 38, 38, 0.25);   color: #DC2626; }
+  .badge--engaged  { background: rgba(139, 92, 246, 0.15);  color: #8B5CF6; }
+
+  .health-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .health-dot--online  { background: #10B981; box-shadow: 0 0 6px #10B981; }
+  .health-dot--degraded{ background: #F59E0B; box-shadow: 0 0 6px #F59E0B; }
+  .health-dot--offline { background: #EF4444; animation: pulse-red 1s infinite; }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 4px rgba(239, 68, 68, 0.4); }
+  50%       { box-shadow: 0 0 20px rgba(239, 68, 68, 0.9); }
+}
+
+@keyframes expand-fade {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes row-pulse {
+  0%, 100% { background: transparent; }
+  50%       { background: rgba(220, 38, 38, 0.08); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
