@@ -11,6 +11,15 @@ except ImportError:
     from track_manager import TrackManager
 from shared.schemas.track import SensorEvent
 
+# Optional TimescaleDB persistence
+try:
+    from shared.utils.database import write_fused_track, init_database
+    HAS_DATABASE = True
+except ImportError:
+    HAS_DATABASE = False
+    write_fused_track = None
+    init_database = None
+
 KAFKA_BROKERS = os.getenv("KAFKA_BROKERS", "localhost:19092")
 
 conf_consumer = {
@@ -29,6 +38,13 @@ track_manager = TrackManager()
 
 async def main():
     print(f"Starting Sensor Fusion Engine... connecting to {KAFKA_BROKERS}")
+    
+    # Initialize TimescaleDB if available
+    if HAS_DATABASE:
+        try:
+            await init_database()
+        except Exception as e:
+            print(f"Warning: Could not initialize database: {e}")
     
     last_publish_time = time.time()
     try:

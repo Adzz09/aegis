@@ -12,6 +12,15 @@ from confluent_kafka import Consumer, Producer
 from shared.schemas.threat_score import ThreatScore, ThreatLevel
 from shared.schemas.track import FusedTrack
 
+# Optional TimescaleDB persistence
+try:
+    from shared.utils.database import write_threat_score, init_database
+    HAS_DATABASE = True
+except ImportError:
+    HAS_DATABASE = False
+    write_threat_score = None
+    init_database = None
+
 KAFKA_BROKERS = os.getenv("KAFKA_BROKERS", "localhost:19092")
 
 conf_consumer = {
