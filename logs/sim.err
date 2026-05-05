@@ -1,1 +1,0 @@
-%4|1777798768.814|FAIL|rdkafka#producer-1| [thrd:localhost:19092/0]: localhost:19092/0: Disconnected: connection closed by peer: POLLHUP (after 5117721ms in state UP)

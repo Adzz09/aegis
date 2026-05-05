@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+docs/yc-pitch/
+docs/YC_Pitch_deck.md
+logs/*.log
+logs/*.err
+ws_out.txt

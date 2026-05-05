@@ -1,6 +1,0 @@
-D:\aegis\optimizer\src\main.py:66: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  timestamp=datetime.utcnow(),
-D:\aegis\optimizer\src\main.py:107: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  to_delete = [tid for tid, t in current_threats.items() if (datetime.utcnow() - t.timestamp).total_seconds() > 2.0]
-D:\aegis\optimizer\src\main.py:76: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  timestamp=datetime.utcnow(),
